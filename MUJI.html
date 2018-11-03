@@ -1,0 +1,424 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">  
+        <title>MUJI</title>
+        <style>
+        body{
+            color:#333;
+            font: 10.6px "Helvetica","Lucida Grande","Microsoft YaHei",sans-serif;
+            position:relative;
+            margin: 0;
+        }
+        /* 使图片与父容器大小相同 */
+        img{
+            max-width: 100%;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color:#666;
+        }
+        /*1、设置页眉的高度*/
+        #gloabalHeader {
+            height: 70px;
+            width: 100%;
+        }
+        #globalHeader .headerWrap {
+        width: 90%;
+        margin: 0 auto;
+        /*设置该属性，使子元素绝对定位生效*/
+        position: relative;
+        max-width: 1024px;
+        }
+        /*logo定位*/
+        #siteName {
+            top: 0;
+            left:0;
+            margin: 0;
+            position: absolute;
+            width: 130px;
+        }
+        #siteName a {
+            padding: 15px 0;
+            display: block;
+            line-height: 1;
+        }
+        /*列表*/
+        #globalHeader .wrapper ul {
+            /*导航菜单偏移量*/
+            padding-left: 15%;
+            margin: 0;
+        }
+        /* 列表菜单项的具体设置 布局 水平排列 */
+        #globalHeader .wrapper li {
+            float: left;
+            font-size: 13px;
+            padding: 28px 10px;
+            line-height: 1;
+        }
+
+        #hGlobalNav a:hover{
+            opacity: 0.7;
+        }
+        #main section {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        /* width的设置是为了缩放屏幕时图片也缩放 */
+        .wrap {
+            width: 90%;
+            max-width: 1024px;
+            margin: 0 auto; 
+        }
+        /*图片大小与父容器相同*/
+        #mainCampaign .mainPnel, #mainCampaign .mainPanel img {
+            width: 100%;
+            display: block;
+            max-width: 1024px;
+            /*父元素适应图片高度*/
+            height: auto;
+            position: relative;
+        }
+        /*并列四张图片，设置边距，按水平线排列 */
+        #main ul {
+            margin: 0 auto;
+            display: flex;
+            /*使溢出的子元素换行 */
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        /*使元素水平排列，并具有相应宽度和高度*/
+        #mainCampaign .fourPanels li {
+            width: 23.5%;
+            max-width: 245px;
+            height: auto;
+        }
+        #mainCampaign ul li {
+            margin-bottom: 20px;
+            /*2%是23.5*4后剩余*/
+            margin: 20px 2% 0 0;
+        }
+        /* 解决图片不能并列的问题，去掉右外边距 */
+        #mainCampaign ul li:last-child {
+            margin-right: 0;
+        }
+        #mainCampaign li a {
+            display: block;
+            padding: 0;
+            min-height: 60px;
+            position: relative;
+        }
+
+        #mainCampaign .title{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0,0, .5);
+            font-weight: bold;
+            width: 90%;
+            color: #fff;
+        }
+        #mainCampaign .more {
+            margin-top: 0;
+        }
+        .more {
+            font-size: 14px;
+            position: relative;
+            padding-right: 20px;
+            text-align: right;
+            width: 90%;
+            max-width: 1024px;
+            margin: -38px auto 1em;
+        }
+        /*小箭头*/
+        .more a::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 7px;
+            height: 7px;
+            margin: -5px -5px 0 0;
+            border-top: solid 1px #7f7f7f;
+            border-right: solid 1px #7f7f7f;
+            transform: rotate(45deg);
+            content: "";
+        }
+        #main h1 {
+            font-size: 18px;
+            margin: 0 auto 1em;
+            line-height: 1;
+            color: #333;
+            width: 90%;
+            max-width: 1024px;
+        }
+        #main #product ul {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        #main #product li {
+            margin: 0 2% 5px 0;
+            width: 15%;
+            box-sizing: border-box;
+            font-size: 12px;
+            padding-right: 2px;
+            background-size: auto 40px;
+            background-repeat: no-repeat;
+            /*定义背景图的起始位置*/
+            background-position: 8px center;
+        }
+        /*让元素并列*/
+        #main #product li:nth-child(6n) {
+            margin-right: 0;
+        }
+        /*这里有个定位的问题，span在a内定位*/
+        #main #product li a {
+            display: block;
+            padding: 0 2px 0 55px;
+            /*改变默认大小*/
+            position: relative;
+            min-height: 60px;
+        }
+        #main #product li span {
+            position: absolute;
+            top: 40%;            
+        }
+        #lab li {
+            width: 32%;
+            height: auto;
+            margin-right: 2%;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        #lab li a {
+            display: block;
+            padding: 0;
+            min-height: 60px;
+            position: relative;
+        }
+        #lab li:last-child {
+            margin-right: 0;
+        }
+        /*图片文字*/
+        #lab li .title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,.5);
+            font-weight: bold;
+            width: 90%;
+            color: #fff; 
+        }
+        #misc {
+            padding: 15px 0;
+            background: #ebebeb;
+            display: block;
+        }
+
+        #misc .content {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1024px;
+            display: block;
+        }
+        #misc ul {
+            float: left;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #misc li {
+            float: left;
+            margin-right: 10px;
+        }
+        #misc a img {
+            height: 25px;
+            width: auto;
+            vertical-align: middle;
+        }
+        /* 右边大图标 */
+        #misc .passport {
+            float: right;
+        }
+        #misc .passport a img {
+            height: 25px;
+            padding-left: 10px;
+            width: auto;
+        }
+        /*解决父元素高度塌陷，清楚子元素浮动影响*/
+        #misc::after, #misc ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        footer {
+            font-size: 12px;
+            padding: 0;
+            background: #000;
+            line-height: 1;
+            width: 100%;
+        }
+        footer nav {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1024px;
+        }
+        footer ul {
+            margin: 0;
+            padding: 15px 0;
+            list-style: none;
+        }
+        footer li {
+            float: left;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+        footer li a {
+            color: #e7e7e7;
+            display: inline-block;
+            padding: 10px 0;
+        }
+        footer ul:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        footer section + section ul {
+            border-top: 1px solid #888;
+        }
+        .country img {
+            width: 18px;
+            height: 12px;
+            margin-right: 8px;
+        }
+        </style>
+    </head>
+    <body>
+        <heaer id="globalHeader">
+            <div class="headerWrap">
+                <h1 id="siteName"><a href="#"><img src="C:\Users\Administrator\Desktop\前端\images/logo2.png" alt="橙旭园"</a></h1>
+                <nav id="hGlobalNav">
+                    <div class="wrapper">
+                        <ul>
+                            <li><a href="#">网络商城</a></li>
+                            <li><a href="#">店铺信息</a></li>
+                            <li><a href="#">生活良品研究所</a></li>
+                            <li><a href="#">问题咨询</a></li>
+                            <li><a href="#">人才招聘</a></li>
+                            <li><a href="#">店铺合作伙伴</a></li>
+                            <li><a href="#">企业情报</a></li>
+                            <li><a href="#">何谓无印良品</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </heaer>
+        <div id="main">
+            <section id="mainCampaign">
+                <div class="wrap">
+                    <div class="mainPanel">
+                        <a href="#"> <img src="C:\Users\Administrator\Desktop\前端\images/middle.jpg" alt="新定价" class="pc"></a>
+                    </div>
+                    <ul class="fourPanels">
+                        <li> <a href="#" ><img src="C:\Users\Administrator\Desktop\前端\images/list-1.jpg" alt="自然、当然、无印。"><span class="title">自然、当然、无印。</span></a></li>
+                        <li> <a href="#" ><img src="C:\Users\Administrator\Desktop\前端\images/list-2.jpg" alt="MUJI HOTEL北京坊预定上线"><span class="title">MUJI HOTEL北京坊预定上线</span></a></li>
+                        <li> <a href="#" ><img src="C:\Users\Administrator\Desktop\前端\images/list-3.jpg" alt="柔和洗面洁面"><span class="title">柔和洗面洁面</span></a></li>
+                        <li> <a href="#" ><img src="C:\Users\Administrator\Desktop\前端\images/list-4.jpg" alt="SALE"></a></li>
+                    </ul>
+                </div>
+                <div class="more"><a href="#">更多</a></div>
+            </section>
+            <section id="product">
+                <h1>产品</h1>
+                <div class="more"><a href="#">网络商城</a></div>
+                <div class="wrap">
+                    <ul>
+                        <li style="background-image: url(images/p1-1.jpg)"><a href="#"><span>男装</span></a></li>
+                        <li style="background-image: url(images/p1-2.jpg)"><a href="#"><span>女装</span></a></li>
+                        <li style="background-image: url(images/p1-3.jpg)"><a href="#"><span>童装</span></a></li>
+                        <li style="background-image: url(images/p1-4.jpg)"><a href="#"><span>鞋包</span></a></li>
+                        <li style="background-image: url(images/p1-5.jpg)"><a href="#"><span>服装杂货</span></a></li>
+                        <li style="background-image: url(images/p1-6.jpg)"><a href="#"><span>内衣</span></a></li>
+                    </ul>
+                    <ul>
+                        <li style="background-image: url(images/p2-1.jpg)"><a href="#"><span>织品</span></a></li>
+                        <li style="background-image: url(images/p2-2.jpg)"><a href="#"><span>家具</span></a></li>
+                        <li style="background-image: url(images/p2-3.jpg)"><a href="#"><span>电子产品</span></a></li>
+                        <li style="background-image: url(images/p2-4.jpg)"><a href="#"><span>居家用品</span></a></li>
+                        <li style="background-image: url(images/p2-5.jpg)"><a href="#"><span>文具</span></a></li>
+                        <li style="background-image: url(images/p2-6.jpg)"><a href="#"><span>卫生 & 美容用品</span></a></li>
+                        <li style="background-image: url(images/p2-7.jpg)"><a href="#"><span>户外用品</span></a></li>
+                    </ul>
+                    <ul>
+                        <li style="background-image: url(images/p3-1.jpg)"><a href="#"><span>食品</span></a></li>
+                    </ul>
+                </div>
+            </section>
+            <section id="lab">
+                <h1>店铺服务</h1>
+                <div class="more"><a href="/en/net/feature/shop/">更多</a></div>
+                <div class="wrap">
+                    <ul>
+                        <li> <a href="#"> <img src="images/ser-1.png" alt="MUJIPASSPORT"> <span class="title"></span></a></li>
+                        <li> <a href="#"> <img src="images/ser-2.jpg" alt="InteriorAdvisor"> <span class="title">家具搭配咨询服务</span></a></li>
+                        <li> <a href="#"> <img src="images/ser-3.jpg" alt="StylingAdvisor"> <span class="title">服装搭配咨询服务</span></a></li>
+                    </ul>
+            </section>
+            <aside id="misc">
+                <div class="content">
+                <ul class="sns">
+                    <li class="weibo"><a href="#" target="_blank"><img src="images/weibo.png" alt="weibo"></a></li>
+                    <li class="wechat"><a href="#" target="_blank"><img src="images/wechat.png" alt="wechat"></a></li>
+                </ul>
+                <div class="passport"><a href="#"><img src="images/passport.png" alt="MUJI passport"></a></div>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            <nav id="footerNav">
+                <section class="footerNav1">
+                    <ul>
+                        <li><a href="#">网络商城</a></li>
+                        <li><a href="#">店铺信息</a></li>
+                        <li><a href="#">生活良品研究所</a></li>
+                    </ul>
+                </section>
+                <section class="footerNav2">
+                    <ul>
+                        <li><a href="#">ATELIER MUJI</a></li>
+                        <li><a href="#">Café&amp;Meal MUJI</a></li>
+                        <li><a href="#">MUJI Diner</a></li>
+                    </ul>
+                </section>
+                <section class="footerNav3">
+                    <ul>
+                        <li><a href="#">商品目录</a></li>
+                    </ul>
+                </section>
+                <section class="footerNav4">
+                    <ul>
+                        <li><a href="#">问题咨询</a></li>
+                        <li><a href="#">店铺合作伙伴</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                        <li><a href="#">MUJI message</a></li>
+                        <li><a href="#">何谓无印良品</a></li>
+                        <li><a href="#">企业情报</a></li>
+                    </ul>
+                </section>
+                <section class="footerNav5">
+                    <ul>
+                        <li class="country"><a href="#"><img src="https://www.muji.com.cn/cn/net/contents/img/flag_cn.png" alt="">中国</a></li>
+                    </ul>
+                </section>
+            </nav>
+        </footer>
+    </body>
+</html>
